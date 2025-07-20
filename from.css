@@ -1,0 +1,43 @@
+body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: rgb(244, 248, 202);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 50%;
+      padding: 8px;
+      margin-top: 5px;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      border: 1px solid #ff0000;
+    }
+
+    .multi-group {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+    }
+
+    img {
+      max-width: 150px;
+      display: block;
+      margin-top: 10px;
+    }
+    input:hover{
+        background-color: #d0befe;
+        
+    }

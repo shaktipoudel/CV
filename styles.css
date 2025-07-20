@@ -12,8 +12,9 @@ body {
   background: #000;
   color: #fff;
   padding: 20px;
-  width: 250px;
+  width:350px;
   box-sizing: border-box;
+  margin-left: 15px;
 }
 
 .sidebar img {
@@ -31,7 +32,7 @@ body {
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
+  padding: 5px;
 }
 
 .sidebar ul li {
