@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV Generator Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    .multi-group {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+    }
+
+    img {
+      max-width: 150px;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>CV Generator Form</h1>
+  <form id="cvForm">
+
+    <label>Full Name:</label>
+    <input type="text" id="fullName" required>
+
+    <label>Email:</label>
+    <input type="email" id="email" required>
+
+    <label>Phone:</label>
+    <input type="text" id="phone" required>
+
+    <label>Address:</label>
+    <input type="text" id="address">
+
+    <label>Profile Summary:</label>
+    <textarea id="profile" rows="4"></textarea>
+
+    <label>Skills:</label>
+    <div id="skillsContainer">
+      <div class="multi-group">
+        <input type="text" placeholder="Skill">
+      </div>
+    </div>
+    <button type="button" onclick="addSkill()">Add Skill</button>
+
+    <label>Education:</label>
+    <div id="educationContainer">
+      <div class="multi-group">
+        <input type="text" placeholder="Education">
+      </div>
+    </div>
+    <button type="button" onclick="addEducation()">Add Education</button>
+
+    <label>Extra Curricular Activities:</label>
+    <div id="extraContainer">
+      <div class="multi-group">
+        <input type="text" placeholder="Activity">
+      </div>
+    </div>
+    <button type="button" onclick="addExtra()">Add Extra Activity</button>
+
+    <label>Work Experience:</label>
+    <div id="workContainer">
+      <div class="multi-group">
+        <input type="text" placeholder="Job Title">
+        <textarea placeholder="Description" rows="2"></textarea>
+      </div>
+    </div>
+    <button type="button" onclick="addWork()">Add Work Experience</button>
+
+    <label>Upload Photo:</label>
+    <input type="file" id="photo" accept="image/*">
+    <img id="photoPreview" src="" alt="Photo Preview" />
+
+    <br>
+    <button type="submit">Generate CV</button>
+  </form>
+
+  <script>
+    function addSkill() {
+      const container = document.getElementById('skillsContainer');
+      const div = document.createElement('div');
+      div.className = 'multi-group';
+      div.innerHTML = '<input type="text" placeholder="Skill">';
+      container.appendChild(div);
+    }
+
+    function addEducation() {
+      const container = document.getElementById('educationContainer');
+      const div = document.createElement('div');
+      div.className = 'multi-group';
+      div.innerHTML = '<input type="text" placeholder="Education">';
+      container.appendChild(div);
+    }
+
+    function addExtra() {
+      const container = document.getElementById('extraContainer');
+      const div = document.createElement('div');
+      div.className = 'multi-group';
+      div.innerHTML = '<input type="text" placeholder="Activity">';
+      container.appendChild(div);
+    }
+
+    function addWork() {
+      const container = document.getElementById('workContainer');
+      const div = document.createElement('div');
+      div.className = 'multi-group';
+      div.innerHTML = '<input type="text" placeholder="Job Title"><textarea placeholder="Description" rows="2"></textarea>';
+      container.appendChild(div);
+    }
+
+    let photoBase64 = "";
+    const photoInput = document.getElementById('photo');
+    const photoPreview = document.getElementById('photoPreview');
+
+    photoInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          photoBase64 = e.target.result;
+          photoPreview.src = photoBase64;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    const form = document.getElementById('cvForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const skills = [];
+      document.querySelectorAll('#skillsContainer input').forEach(input => {
+        if (input.value.trim()) skills.push(input.value.trim());
+      });
+
+      const education = [];
+      document.querySelectorAll('#educationContainer input').forEach(input => {
+        if (input.value.trim()) education.push(input.value.trim());
+      });
+
+      const extra = [];
+      document.querySelectorAll('#extraContainer input').forEach(input => {
+        if (input.value.trim()) extra.push(input.value.trim());
+      });
+
+      const work = [];
+      document.querySelectorAll('#workContainer .multi-group').forEach(group => {
+        const title = group.querySelector('input').value.trim();
+        const desc = group.querySelector('textarea').value.trim();
+        if (title && desc) work.push({ title, desc });
+      });
+
+      const cvData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        profile: document.getElementById('profile').value,
+        skills,
+        education,
+        extra,
+        work,
+        photo: photoBase64
+      };
+
+      localStorage.setItem('cvData', JSON.stringify(cvData));
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

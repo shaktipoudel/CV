@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My CV</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cv-container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <img id="profilePhoto" src="https://via.placeholder.com/150" alt="Profile Photo" />
+      <h2>Details</h2>
+      <ul>
+        <li id="cvName">Your Name</li>
+        <li id="cvEmail">you@example.com</li>
+        <li id="cvPhone">+123456789</li>
+      </ul>
+
+      <h2>Skills</h2>
+      <ul id="skillsList">
+        <!-- Filled by JS -->
+      </ul>
+
+      <h2>Language</h2>
+      <ul>
+        <li>Nepali</li>
+        <li>English</li>
+        <li>Hindi</li>
+      </ul>
+
+      <h2>Hobbies</h2>
+      <ul>
+        <li>Music</li>
+        <li>Coding</li>
+        <li>Football</li>
+        <li>Travelling</li>
+      </ul>
+    </aside>
+
+    <!-- Right Content -->
+    <main class="content">
+      <h1 id="cvNameRight">Your Name</h1>
+      <p id="cvAddress">Your Address</p>
+
+      <section>
+        <h2>PROFILE</h2>
+        <p id="cvProfile">A short description about you.</p>
+      </section>
+
+      <section>
+        <h2>EDUCATION</h2>
+        <ul id="cvEducation">
+          <!-- Filled by JS -->
+        </ul>
+      </section>
+
+      <section>
+        <h2>EXTRA CURRICULAR ACTIVITIES</h2>
+        <ul id="cvExtra">
+          <!-- Filled by JS -->
+        </ul>
+      </section>
+
+      <section>
+        <h2>WORK EXPERIENCE</h2>
+        <ul id="cvWork">
+          <!-- Filled by JS -->
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const cvData = JSON.parse(localStorage.getItem('cvData'));
+    if (cvData) {
+      document.getElementById('profilePhoto').src = cvData.photo || 'https://via.placeholder.com/150';
+      document.getElementById('cvName').textContent = cvData.fullName || '';
+      document.getElementById('cvNameRight').textContent = cvData.fullName || '';
+      document.getElementById('cvEmail').textContent = cvData.email || '';
+      document.getElementById('cvPhone').textContent = cvData.phone || '';
+      document.getElementById('cvAddress').textContent = cvData.address || '';
+      document.getElementById('cvProfile').textContent = cvData.profile || '';
+
+      const skillsList = document.getElementById('skillsList');
+      skillsList.innerHTML = '';
+      if (cvData.skills && cvData.skills.length > 0) {
+        cvData.skills.forEach(skill => {
+          skillsList.innerHTML += `<li>${skill}</li>`;
+        });
+      }
+
+      const eduList = document.getElementById('cvEducation');
+      eduList.innerHTML = '';
+      if (cvData.education && cvData.education.length > 0) {
+        cvData.education.forEach(e => {
+          eduList.innerHTML += `<li>${e}</li>`;
+        });
+      }
+
+      const extraList = document.getElementById('cvExtra');
+      extraList.innerHTML = '';
+      if (cvData.extra && cvData.extra.length > 0) {
+        cvData.extra.forEach(e => {
+          extraList.innerHTML += `<li>${e}</li>`;
+        });
+      }
+
+      const workList = document.getElementById('cvWork');
+      workList.innerHTML = '';
+      if (cvData.work && cvData.work.length > 0) {
+        cvData.work.forEach(w => {
+          workList.innerHTML += `<li><strong>${w.title}</strong><br>${w.desc}</li>`;
+        });
+      }
+    }
+  </script>
+</body>
+</html>

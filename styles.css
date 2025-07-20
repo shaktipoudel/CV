@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.cv-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  width: 250px;
+  box-sizing: border-box;
+}
+
+.sidebar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.sidebar h2 {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 5px 0;
+}
+
+.content {
+  background: #fff;
+  flex: 1;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.content h1 {
+  margin-top: 0;
+}
+
+.content section {
+  margin-top: 30px;
+}
+
+.content h2 {
+  margin-bottom: 10px;
+}
+
+.content ul {
+  list-style: disc inside;
+}
+
+.content ul li {
+  margin-bottom: 10px;
+}
