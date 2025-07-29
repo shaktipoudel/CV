@@ -86,5 +86,5 @@
       };
 
       localStorage.setItem('cvData', JSON.stringify(cvData));
-      window.location.href = 'index.html';
+      window.location.href = 'form.html';
     });
