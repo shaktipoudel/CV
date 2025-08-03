@@ -1,43 +1,98 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: rgb(244, 248, 202);
-    }
+  margin: 25px 5px 5px 25px;
+  background-color: #d3f2f2;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-    }
+form {
+  max-width: 400px;
+  background: #fff;
+  padding: 24px 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-    input[type="text"],
-    input[type="email"],
-    textarea {
-      width: 50%;
-      padding: 8px;
-      margin-top: 5px;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      border-bottom-left-radius: 15px;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      border: 1px solid #000000;
-    }
+label {
+  margin: 5px 0 2px 0;
+  font-size: 1rem;
+}
 
-    .multi-group {
-      margin-bottom: 10px;
-    }
+input,
+input,
+textarea {
+  width: 100%;
+  margin: 5px 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: background 0.2s;
+  border: 1px solid #b0b0b0;
+  padding: 8px 10px;
+  font-size: 1rem;
+}
+textarea {
+  height: 60px;
+  resize: vertical;
+}
 
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-    }
+input:hover,
+input:hover,
+textarea:hover {
+  background-color: #a084e8; /* Increased contrast for better accessibility */
+}
+.multi-group {
+  margin-bottom: 10px;
+}
 
-    img {
-      max-width: 150px;
-      display: block;
-      margin-top: 10px;
-    }
-    input:hover{
-        background-color: #d0befe;
-        
-    }
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #3a2ea8; /* Improved contrast */
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #2a217a; /* Improved contrast for hover */
+}
+
+img {
+  max-width: 150px;
+  display: block;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 10px;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  form {
+    padding: 14px 6px;
+    max-width: 100%;
+  }
+  input,
+  textarea {
+    font-size: 1em;
+  }
+  img {
+    max-width: 100px;
+  }
+}
